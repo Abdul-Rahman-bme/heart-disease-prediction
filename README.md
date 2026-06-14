@@ -27,10 +27,15 @@ This project focuses on learning the complete ML workflow:
 - Confusion matrix analysis
 - Threshold tuning
 - Saving trained model artifacts
+- Running inference using a reusable prediction script
 
 ## Dataset
 
-The project uses the processed Cleveland heart disease dataset. (https://archive.ics.uci.edu/dataset/45/heart+disease)
+The project uses the processed Cleveland Heart Disease dataset from the UCI Machine Learning Repository.
+
+Dataset reference:
+
+- UCI Heart Disease Dataset: https://archive.ics.uci.edu/dataset/45/heart+disease
 
 The dataset has:
 
@@ -40,8 +45,8 @@ The dataset has:
 
 Missing values were found in:
 
-- ca: 4 missing values
-- thal: 2 missing values
+- `ca`: 4 missing values
+- `thal`: 2 missing values
 
 These missing values were filled using the mode because both columns are category-like coded variables.
 
@@ -49,26 +54,49 @@ These missing values were filled using the mode because both columns are categor
 
 Continuous features:
 
-- age
-- trestbps
-- chol
-- thalach
-- oldpeak
+- `age`
+- `trestbps`
+- `chol`
+- `thalach`
+- `oldpeak`
 
 Categorical / coded features:
 
-- sex
-- cp
-- fbs
-- restecg
-- exang
-- slope
-- ca
-- thal
+- `sex`
+- `cp`
+- `fbs`
+- `restecg`
+- `exang`
+- `slope`
+- `ca`
+- `thal`
 
 Target:
 
-- target
+- `target`
+
+## Project Structure
+
+```text
+Heart Disease Prediction/
+├── data/
+│   └── heart+disease/
+│       ├── heart-disease.names
+│       └── processed.cleveland.data
+├── models/
+│   ├── logistic_regression_model.pkl
+│   └── standard_scaler.pkl
+├── notebooks/
+│   └── HeartDiseasePrediction.ipynb
+├── results/
+│   ├── cross_validation_results.csv
+│   └── threshold_results.csv
+├── src/
+│   └── predict.py
+├── .gitignore
+├── README.md
+└── requirements.txt
+```
 
 ## Exploratory Data Analysis Findings
 
@@ -163,6 +191,64 @@ results/cross_validation_results.csv
 results/threshold_results.csv
 ```
 
+## How to Run
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/Abdul-Rahman-bme/heart-disease-prediction.git
+cd heart-disease-prediction
+```
+
+### 2. Create and activate a virtual environment
+
+On Windows PowerShell:
+
+```powershell
+python -m venv venv
+.\venv\Scripts\activate
+```
+
+On macOS/Linux:
+
+```bash
+python -m venv venv
+source venv/bin/activate
+```
+
+### 3. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Run the prediction script
+
+```bash
+python src/predict.py
+```
+
+Example output:
+
+```text
+Heart Disease Prediction
+------------------------
+Disease probability: 0.97
+Decision threshold: 0.5
+Prediction: Heart disease present
+```
+
+## Prediction Script
+
+The file `src/predict.py` loads:
+
+- the trained Logistic Regression model
+- the fitted StandardScaler
+
+It then scales a sample patient's continuous features and predicts the probability of heart disease.
+
+The scaler is required because the model was trained using scaled continuous features. New patient data must be transformed using the same scaler fitted on the training data before prediction.
+
 ## Important Limitation
 
 This project is educational and should not be used for real medical diagnosis.
@@ -181,3 +267,7 @@ The dataset is small and may not represent modern real-world clinical population
 - Cross-validation
 - Threshold tuning
 - Model saving with Joblib
+
+## Author - Abdul Rahman
+- Basic inference script development
+- Git and GitHub project publishing
