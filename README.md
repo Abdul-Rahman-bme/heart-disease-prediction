@@ -267,7 +267,7 @@ The dataset is small and may not represent modern real-world clinical population
 - Cross-validation
 - Threshold tuning
 - Model saving with Joblib
-
-## Author - Abdul Rahman
 - Basic inference script development
 - Git and GitHub project publishing
+
+## Author - Abdul Rahman
