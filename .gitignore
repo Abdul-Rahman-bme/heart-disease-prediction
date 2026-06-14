@@ -1,0 +1,32 @@
+# Python environment
+venv/
+env/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Zip/raw downloaded files
+*.zip
+
+# Temporary files
+*.log
+
+# Extra local learning files
+Learning/
+
+# PDFs generated locally
+*.pdf
+
+# Raw unused dataset files
+data/heart+disease/*
+!data/heart+disease/processed.cleveland.data
+!data/heart+disease/heart-disease.names
