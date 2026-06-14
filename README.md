@@ -30,7 +30,7 @@ This project focuses on learning the complete ML workflow:
 
 ## Dataset
 
-The project uses the processed Cleveland heart disease dataset.
+The project uses the processed Cleveland heart disease dataset. (https://archive.ics.uci.edu/dataset/45/heart+disease)
 
 The dataset has:
 
